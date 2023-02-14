@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <properties resource="db.properties"> </properties>
+    <!-- 用于输出日志 log4j:LOG4J SLF4J -->
+
+    <typeAliases>
+<!--        起别名之后在mapper映射文件中(例如结果集)可以直接写类名省略路径  -->
+<!--        <package name="pojo"/>-->
+<!--        <typeAlias alias="user" type="pojo.User"/>-->
+
+    </typeAliases>
+
+
+<!--可以配置多个环境 通过default来切换不同的环境 用来连接不同的数据库     -->
+    <environments default="mysql">
+        <environment id="mysql">
+<!--            事务管理方式 将来被spring接管-->
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="${DRIVER}"/>
+                <property name="url" value="${URL}"/>
+                <property name="username" value="${USERNAME}"/>
+                <property name="password" value="${PASSWORD}"/>
+            </dataSource>
+        </environment>
+
+        <environment id="SQLServer">
+        <transactionManager type="SQLServer"/>
+        <dataSource type="POOLED">
+            <property name="SQLServerdriver" value="${DRIVER}"/>
+            <property name="url" value="${URL}"/>
+            <property name="SQLServerusername" value="${USERNAME}"/>
+            <property name="SQLServerpassword" value="${PASSWORD}"/>
+        </dataSource>
+        </environment>
+
+    </environments>
+    <mappers>
+<!--两种加载映射文件的方式
+·mapper代理开发方式
+·包扫描开发方式
+-->
+<!--        <mapper resource="mapper/UserMapper.xml"/>-->
+        <package name="mapper"/>
+    </mappers>
+
+
+</configuration>
