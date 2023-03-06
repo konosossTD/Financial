@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+
+
+<!--
+namespace 命名空间：应当为接口的全限定名(自JAVA目录开始)
+-->
+<mapper namespace="com.may.mapper.StockMapper">
+
+
+
+    <!--如果数据库字段名和对应实体类字段名不一致 就要使用如下进行映射-->
+<!--    <resultMap id="stockResultMap" type="com.may.pojo.Stock">-->
+<!--        <result column="stockCode" property="stockCode"></result>-->
+<!--        <result column="stockName" property="stockName"></result>-->
+<!--        <result column="stockCompany" property="stockCompany"></result>-->
+<!--        <result column="currentStockPrice" property="currentStockPrice"></result>-->
+<!--        <result column="changePercent" property="changePercent"></result>-->
+<!--        <result column="changePrice" property="changePrice"></result>-->
+<!--        <result column="volume" property="volume"></result>-->
+<!--        <result column="volumePrice" property="volumePrice"></result>-->
+<!--        <result column="lastClosingPrice" property="lastClosingPrice"></result>-->
+<!--        <result column="openingPrice" property="openingPrice"></result>-->
+<!--        <result column="highPrice" property="highPrice"></result>-->
+<!--        <result column="lowPrice" property="lowPrice"></result>-->
+<!--        <result column="amplitudePercent" property="amplitudePercent"></result>-->
+
+
+<!--    </resultMap>-->
+    <select id="selectAllStocks" resultType="com.may.pojo.Stock">
+        select * from dbStock;
+    </select>
+
+    <insert id="insertStock">
+        insert into dbStock (stockName,stockCode,stockCompany,currentStockPrice,changePercent,changePrice,volume,volumePrice,lastClosingPrice,openingPrice,highPrice,lowPrice,amplitudePercent)
+        values(#{stockName},#{stockCode},#{stockCompany},#{currentStockPrice},#{changePercent},#{changePrice},#{volume},#{volumePrice},#{lastClosingPrice},#{openingPrice},#{highPrice},#{lowPrice},#{amplitudePercent})
+    </insert>
+    <!--    <select id="selectByStockName" resultType="com.may.pojo.Stock">-->
+<!--        select * from dbuser where db_username = #{username};-->
+<!--    </select>-->
+
+
+</mapper>

@@ -44,7 +44,7 @@
 ·包扫描开发方式
 -->
 <!--        <mapper resource="mapper/UserMapper.xml"/>-->
-        <package name="mapper"/>
+        <package name="com.may.mapper"/>
     </mappers>
 
 
